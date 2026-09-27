@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#d4af37">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Saddam Studios">
+  <title>Mohammad Saddam Studios | Luxury Cinema & Academy</title>
+
+  <style>
+    :root {
+      --bg: #07080b;
+      --card-bg: rgba(18, 21, 31, 0.95);
+      --card-border: rgba(212, 175, 55, 0.25);
+      --gold-primary: #d4af37;
+      --gold-light: #f9e295;
+      --gold-dark: #8c6d1f;
+      --gold-glow: rgba(212, 175, 55, 0.4);
+      --accent-green: #25d366;
+      --accent-blue: #3b82f6;
+      --text-main: #f5f6fa;
+      --text-sub: #9ea3b5;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text-main);
+      padding-bottom: 95px;
+      overflow-x: hidden;
+    }
+
+    .top-nav {
+      position: sticky;
+      top: 0;
+      background: rgba(7, 8, 11, 0.95);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-logo-svg {
+      width: 34px;
+      height: 34px;
+      filter: drop-shadow(0 0 8px var(--gold-glow));
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #ffffff, var(--gold-light), var(--gold-primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+
+    .user-tag-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+
+    .admin-unlock-btn {
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--gold-primary);
+      color: var(--gold-primary);
+      padding: 6px 10px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .container {
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    .profile-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 22px;
+      padding: 22px 18px;
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.8), 0 0 20px rgba(212, 175, 55, 0.1);
+      margin-bottom: 22px;
+    }
+
+    .profile-top {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .golden-emblem-wrap {
+      width: 74px;
+      height: 74px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .golden-emblem-svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 14px var(--gold-glow));
+    }
+
+    .profile-meta h2 {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .gold-verified {
+      width: 16px;
+      height: 16px;
+      fill: var(--gold-primary);
+    }
+
+    .profile-meta p {
+      font-size: 12px;
+      color: var(--gold-light);
+      font-weight: 600;
+      margin: 2px 0;
+    }
+
+    .profile-meta span {
+      font-size: 11px;
+      color: var(--text-sub);
+    }
+
+    .bio-text {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat-item {
+      background: rgba(9, 11, 17, 0.75);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 10px 8px;
+      text-align: center;
+    }
+
+    .stat-num {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--gold-light);
+    }
+
+    .stat-label {
+      font-size: 10px;
+      color: var(--text-sub);
+      margin-top: 2px;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 24px 0 14px;
+      border-left: 4px solid var(--gold-primary);
+      padding-left: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* VIP Academy & Monetization Section */
+    .vip-vault-card {
+      background: linear-gradient(135deg, #181926, #0e101a);
+      border: 2px solid var(--gold-primary);
+      border-radius: 20px;
+      padding: 18px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 30px rgba(212, 175, 55, 0.25);
+    }
+
+    .vip-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      color: #000;
+      font-size: 10px;
+      font-weight: 900;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .vip-vault-header h3 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 6px;
+    }
+
+    .vip-vault-header p {
+      font-size: 12px;
+      color: var(--text-sub);
+      line-height: 1.4;
+      margin-bottom: 14px;
+    }
+
+    .locked-box {
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px dashed var(--gold-primary);
+      border-radius: 14px;
+      padding: 18px 14px;
+      text-align: center;
+      margin-bottom: 14px;
+    }
+
+    .pass-input {
+      width: 100%;
+      max-width: 280px;
+      margin: 10px auto;
+      padding: 9px 12px;
+      background: #090a0f;
+      border: 1px solid var(--gold-primary);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      text-align: center;
+      letter-spacing: 2px;
+      display: block;
+    }
+
+    .unlock-submit-btn {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+      color: #000;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .pay-wa-link {
+      display: block;
+      background: linear-gradient(135deg, var(--accent-green), #16a34a);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 800;
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+
+    #unlockedContentArea {
+      display: none;
+      margin-top: 14px;
+      background: #0c0e17;
+      border-radius: 12px;
+      padding: 14px;
+      border: 1px solid rgba(212,175,55,0.3);
+    }
+
+    .lesson-item {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .lesson-item:last-child { border-bottom: none; }
+    .lesson-title { font-size: 13px; font-weight: 700; color: var(--gold-light); margin-bottom: 4px; }
+    .lesson-text { font-size: 12px; color: var(--text-sub); line-height: 1.4; }
+
+    /* Services Section */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .service-info h4 { font-size: 14px; color: #fff; margin-bottom: 4px; }
+    .service-info p { font-size: 11px; color: var(--text-sub); }
+
+    .service-order-btn {
+      background: rgba(37, 211, 102, 0.15);
+      border: 1px solid var(--accent-green);
+      color: var(--accent-green);
+      padding: 7px 12px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* Video Feed Section */
+    .video-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+
+    .video-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%;
+      background: #000;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .video-body { padding: 14px; }
+    .video-tag {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .video-title { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .video-desc { font-size: 12px; color: var(--text-sub); line-height: 1.4; margin-bottom: 12px; }
+
+    .wa-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--accent-green), #189e4c);
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 10px;
+      border-radius: 8px;
+    }
+
+    /* Global Reviews Section */
+    .review-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 16px;
+      margin-bottom: 24px;
+    }
+
+    .review-input {
+      width: 100%;
+      padding: 9px 12px;
+      background: #090a0f;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .review-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 10px;
+      padding: 12px;
+      margin-top: 10px;
+    }
+
+    .review-author {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-light);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .review-text {
+      font-size: 12px;
+      color: var(--text-sub);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+
+    /* Admin Panel */
+    #adminControlPanel {
+      display: none;
+      background: #11131e;
+      border: 2px solid var(--gold-primary);
+      border-radius: 18px;
+      padding: 18px;
+      margin-bottom: 24px;
+    }
+
+    .admin-input {
+      width: 100%;
+      padding: 10px 12px;
+      background: #07080b;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      color: #fff;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    .save-profile-btn {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-dark));
+      color: #000;
+      border: none;
+      padding: 11px;
+      font-size: 13px;
+      font-weight: 800;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* Bottom Dock */
+    .bottom-dock {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(9, 11, 16, 0.96);
+      backdrop-filter: blur(20px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0;
+      z-index: 1000;
+    }
+
+    .dock-tab {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3px;
+      color: var(--text-sub);
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .dock-tab.active { color: var(--gold-primary); }
+    .dock-icon { font-size: 18px; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <div class="top-nav">
+    <div class="brand-wrap">
+      <svg class="nav-logo-svg" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="goldGradNav" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#fff0aa"/>
+            <stop offset="50%" stop-color="#d4af37"/>
+            <stop offset="100%" stop-color="#8a6d1e"/>
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="45" fill="#121522" stroke="url(#goldGradNav)" stroke-width="3"/>
+        <path d="M26 62 L32 38 L50 50 L68 38 L74 62 Z" fill="url(#goldGradNav)"/>
+        <circle cx="32" cy="35" r="3.5" fill="#ffffff"/>
+        <circle cx="50" cy="46" r="3.5" fill="#ffffff"/>
+        <circle cx="68" cy="35" r="3.5" fill="#ffffff"/>
+        <rect x="26" y="65" width="48" height="5" rx="2" fill="url(#goldGradNav)"/>
+      </svg>
+      <div class="brand-title">SADDAM STUDIOS</div>
+    </div>
+    <div class="nav-actions">
+      <button id="userLoginStatusBtn" class="user-tag-btn" onclick="openLoginPrompt()">👤 Member Login</button>
+      <button class="admin-unlock-btn" onclick="toggleControlCenter()">⚙️ 84097</button>
+    </div>
+  </div>
+
+  <div class="container">
+
+    <!-- Admin Master Control Panel -->
+    <div id="adminControlPanel">
+      <div style="display:flex; justify-content:space-between; margin-bottom:12px;">
+        <h3 style="color:var(--gold-light); font-size:14px;">⚡ Studio Live Manager</h3>
+        <span style="font-size:11px; color:var(--accent-green);">PIN: 84097</span>
+      </div>
+
+      <p style="font-size:11px; color:var(--text-sub); margin-bottom:6px; text-transform:uppercase;">Profile Update</p>
+      <input type="text" id="inputPhone" class="admin-input" placeholder="WhatsApp Number">
+      <input type="text" id="inputLocation" class="admin-input" placeholder="Location">
+      <input type="text" id="inputName" class="admin-input" placeholder="Your Name">
+      <input type="text" id="inputBio" class="admin-input" placeholder="Studio Bio">
+      <button class="save-profile-btn" onclick="saveProfileData()">💾 Update Info</button>
+
+      <p style="font-size:11px; color:var(--text-sub); margin:14px 0 6px; text-transform:uppercase;">Add Video to Feed</p>
+      <input type="text" id="videoTitleInput" class="admin-input" placeholder="Video Title">
+      <input type="text" id="videoUrlInput" class="admin-input" placeholder="YouTube Link or Video ID">
+      <button class="save-profile-btn" style="background:linear-gradient(135deg,#3b82f6,#2563eb); color:#fff;" onclick="publishVideoFromApp()">🚀 Publish Video</button>
+
+      <p style="font-size:11px; color:var(--text-sub); margin:14px 0 6px; text-transform:uppercase;">Add VIP Paid Lesson/Note</p>
+      <input type="text" id="vipTitleInput" class="admin-input" placeholder="Lesson Name">
+      <textarea id="vipContentInput" class="admin-input" style="height:60px;" placeholder="Secret Notes or Video URL"></textarea>
+      <button class="save-profile-btn" onclick="addVipLesson()">💎 Add to VIP Vault</button>
+    </div>
+
+    <!-- Profile Dashboard Card -->
+    <div class="profile-card">
+      <div class="profile-top">
+        <div class="golden-emblem-wrap">
+          <svg class="golden-emblem-svg" viewBox="0 0 120 120">
+            <defs>
+              <linearGradient id="goldGradMain" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fff6cc"/>
+                <stop offset="35%" stop-color="#e0b840"/>
+                <stop offset="70%" stop-color="#9d7820"/>
+                <stop offset="100%" stop-color="#5a420b"/>
+              </linearGradient>
+              <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#1b1e2e"/>
+                <stop offset="100%" stop-color="#0a0c14"/>
+              </linearGradient>
+            </defs>
+            <circle cx="60" cy="60" r="56" fill="url(#shieldGrad)" stroke="url(#goldGradMain)" stroke-width="4"/>
+            <circle cx="60" cy="60" r="48" fill="none" stroke="url(#goldGradMain)" stroke-width="1.2" stroke-dasharray="3,3"/>
+            <path d="M34 74 L40 46 L60 58 L80 46 L86 74 Z" fill="url(#goldGradMain)"/>
+            <circle cx="40" cy="42" r="4" fill="#ffffff"/>
+            <circle cx="60" cy="54" r="4" fill="#ffffff"/>
+            <circle cx="80" cy="42" r="4" fill="#ffffff"/>
+            <rect x="34" y="77" width="52" height="6" rx="3" fill="url(#goldGradMain)"/>
+            <text x="60" y="73" font-size="13" font-weight="900" fill="#000" text-anchor="middle" font-family="serif">MS</text>
+          </svg>
+        </div>
+
+        <div class="profile-meta">
+          <h2 id="displayName">
+            Mohammad Saddam Hussain
+            <svg class="gold-verified" viewBox="0 0 24 24"><path d="M12 2L15.09 5.26L19.5 5.79L18.89 10.22L21.82 13.56L18.25 16.27L17.88 20.73L13.43 20.35L10.5 23.5L8.27 19.64L3.82 19.46L4.23 15.01L1.18 11.78L4.61 8.94L4.8 4.49L9.27 4.51L12 2ZM10.5 16.5L17.5 9.5L16.08 8.08L10.5 13.67L7.92 11.08L6.5 12.5L10.5 16.5Z"/></svg>
+          </h2>
+          <p id="displayRole">Cinema Lab & Creative Director</p>
+          <span id="displayLocation">📍 Dhanwar, Hazaribagh, Jharkhand</span>
+        </div>
+      </div>
+      <p class="bio-text" id="displayBio">
+        Official visual laboratory specializing in high-contrast cinematic edits, AI animations, video thumbnails, and motion picture storytelling.
+      </p>
+      
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-num">50+</div>
+          <div class="stat-label">Edits Done</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">4K / UHD</div>
+          <div class="stat-label">Quality</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Satisfaction</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- VIP Creator Academy & Paid Monetization -->
+    <div class="vip-vault-card">
+      <span class="vip-badge">👑 Paid Member Exclusive</span>
+      <div class="vip-vault-header">
+        <h3>Saddam Pro Editing Vault & Masterclass</h3>
+        <p>Pro cinematic presets, color grading formulas, AI prompt engineering guides, aur private video masterclass.</p>
+      </div>
+
+      <div id="lockedStateNotice" class="locked-box">
+        <div style="font-size:26px; margin-bottom:6px;">🔒</div>
+        <p style="font-size:13px; font-weight:700; color:#fff;">VIP Content Locked</p>
+        <p style="font-size:11px; color:var(--text-sub); margin-top:2px;">
+          Access Code enter karke notes aur video tutorials unlock karein:
+        </p>
+        <input type="text" id="vaultAccessCodeInput" class="pass-input" placeholder="ENTER ACCESS CODE">
+        <button class="unlock-submit-btn" onclick="verifyVaultAccess()">🔓 Unlock Vault</button>
+      </div>
+
+      <a id="btnPayCourseWa" href="#" target="_blank" class="pay-wa-link">
+        💳 Buy Access Code on WhatsApp (₹199 Only)
+      </a>
+
+      <div id="unlockedContentArea">
+        <h4 style="color:var(--accent-green); font-size:14px; margin-bottom:8px;">✅ VIP Vault Active</h4>
+        <div id="vipLessonList">
+          <div class="lesson-item">
+            <div class="lesson-title">📌 Lesson 1: 4K Cinematic Color Grading Formula</div>
+            <div class="lesson-text">Saturation: -5, Highlights: -15, Shadows: +10, Warmth: +8. Use moody teal-orange balance for high-budget commercial tone.</div>
+          </div>
+          <div class="lesson-item">
+            <div class="lesson-title">📌 Lesson 2: Photorealistic AI Video Prompts</div>
+            <div class="lesson-text">Prompt core: 'cinematic 35mm film photography, volumetric ray tracing, high dynamic range, intricate realism, 8k resolution'.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Studio Services & Booking -->
+    <div class="section-title">
+      <h2>Studio Services & Booking</h2>
+    </div>
+
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-info">
+          <h4>🎬 Pro YouTube & Reel Editing</h4>
+          <p>Cinematic cuts, sound dynamics & color grading</p>
+        </div>
+        <a id="srvBtn1" href="#" target="_blank" class="service-order-btn">Book on WhatsApp</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-info">
+          <h4>🖼️ High-Contrast Thumbnail & Posters</h4>
+          <p>16:9 & 9:16 custom movie/video graphics</p>
+        </div>
+        <a id="srvBtn2" href="#" target="_blank" class="service-order-btn">Book on WhatsApp</a>
+      </div>
+
+      <div class="service-card">
+        <div class="service-info">
+          <h4>🤖 AI Video & Visual Storytelling</h4>
+          <p>Cinematic prompts, character motion & VFX</p>
+        </div>
+        <a id="srvBtn3" href="#" target="_blank" class="service-order-btn">Book on WhatsApp</a>
+      </div>
+    </div>
+
+    <!-- Video Showcase Feed Header -->
+    <div class="section-title">
+      <h2>Featured Works & Portfolio</h2>
+      <span style="font-size:12px; color:var(--gold-light);">Global Feed</span>
+    </div>
+
+    <div id="videoFeedContainer">
+      <div class="video-card">
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/Ta4nyuMvqok" 
+            title="Featured Work" 
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-body">
+          <span class="video-tag">Masterwork Edit</span>
+          <h3 class="video-title">Cinematic Pro Editing & Motion Work</h3>
+          <p class="video-desc">Advanced transitions, sound dynamics, color balance and motion visual effects by Mohammad Saddam Studios.</p>
+          <a id="btnDefaultOrder" href="#" target="_blank" class="wa-btn">
+            💬 Direct Order on WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Client Reviews Section -->
+    <div class="section-title">
+      <h2>Client Reviews & Community</h2>
+    </div>
+
+    <div class="review-box">
+      <p style="font-size:12px; color:var(--text-sub); margin-bottom:8px;">Studio feedback ya work review post karein:</p>
+      <input type="text" id="revNameInput" class="review-input" placeholder="Aapka Naam">
+      <textarea id="revCommentInput" class="review-input" style="height:60px;" placeholder="Review ya rating..."></textarea>
+      <button class="save-profile-btn" onclick="submitPublicReview()">⭐ Post Public Review</button>
+
+      <div id="publicReviewsContainer" style="margin-top:14px;">
+        <div class="review-item">
+          <div class="review-author">
+            <span>Rohan Verma</span>
+            <span style="color:var(--gold-primary);">★★★★★</span>
+          </div>
+          <p class="review-text">Saddam bhai ki reel editing quality best hai! Color grading bahut clean aayi.</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Navigation Dock -->
+  <div class="bottom-dock">
+    <a href="#" class="dock-tab active">
+      <span class="dock-icon">⚡</span>
+      Dashboard
+    </a>
+    <a id="bottomCallBtn" href="tel:7781972099" class="dock-tab">
+      <span class="dock-icon">📞</span>
+      Call Saddam
+    </a>
+    <a id="bottomWaBtn" href="#" target="_blank" class="dock-tab">
+      <span class="dock-icon">💬</span>
+      WhatsApp
+    </a>
+  </div>
+
+  <script>
+    const SECRET_PIN = "84097";
+    const VAULT_PASSCODE = "PRO2026";
+    let isUnlocked = false;
+
+    let appData = {
+      phone: "7781972099",
+      location: "📍 Dhanwar, Hazaribagh, Jharkhand",
+      name: "Mohammad Saddam Hussain",
+      bio: "Official visual laboratory specializing in high-contrast cinematic edits, AI animations, video thumbnails, and motion picture storytelling."
+    };
+
+    window.onload = function() {
+      const savedData = localStorage.getItem('saddam_master_profile');
+      if (savedData) {
+        appData = JSON.parse(savedData);
+      }
+      applyProfileData();
+
+      // Check current login session
+      const loggedUser = localStorage.getItem('saddam_current_user');
+      if (loggedUser) {
+        document.getElementById('userLoginStatusBtn').innerText = `👤 ${loggedUser}`;
+      }
+
+      // Load Videos
+      const savedVideos = JSON.parse(localStorage.getItem('saddam_master_videos') || '[]');
+      savedVideos.forEach(v => renderVideoCard(v.title, v.id, true));
+
+      // Load VIP Lessons
+      loadVipLessons();
+
+      // Load Reviews
+      loadPublicReviews();
+    };
+
+    function applyProfileData() {
+      document.getElementById('displayName').innerHTML = `${appData.name} <svg class="gold-verified" viewBox="0 0 24 24"><path d="M12 2L15.09 5.26L19.5 5.79L18.89 10.22L21.82 13.56L18.25 16.27L17.88 20.73L13.43 20.35L10.5 23.5L8.27 19.64L3.82 19.46L4.23 15.01L1.18 11.78L4.61 8.94L4.8 4.49L9.27 4.51L12 2ZM10.5 16.5L17.5 9.5L16.08 8.08L10.5 13.67L7.92 11.08L6.5 12.5L10.5 16.5Z"/></svg>`;
+      document.getElementById('displayLocation').innerText = appData.location;
+      document.getElementById('displayBio').innerText = appData.bio;
+      document.getElementById('bottomCallBtn').href = "tel:" + appData.phone;
+      
+      const makeWaLink = (msg) => `https://wa.me/91${appData.phone}?text=${encodeURIComponent(msg)}`;
+
+      document.getElementById('bottomWaBtn').href = makeWaLink("अस्सलाम वालेकुम सद्दाम हुसैन भाई, मुझे स्टूडियो से वीडियो एडिट करवाना है।");
+      document.getElementById('btnDefaultOrder').href = makeWaLink("अस्सलाम वालेकुम सद्दाम हुसैन भाई, मैंने आपका वीडियो वर्क देखा। मुझे ऐसा ही काम करवाना है।");
+      document.getElementById('srvBtn1').href = makeWaLink("अस्सलाम वालेकुम सद्दाम भाई, मुझे YouTube/Reels वीडियो एडिट करवाना है।");
+      document.getElementById('srvBtn2').href = makeWaLink("अस्सलाम वालेकुम सद्दाम भाई, मुझे पोस्टर/थंबनेल डिज़ाइन करवाना है।");
+      document.getElementById('srvBtn3').href = makeWaLink("अस्सलाम वालेकुम सद्दाम भाई, मुझे AI वीडियो और विजुअल बनवाना है।");
+      document.getElementById('btnPayCourseWa').href = makeWaLink("अस्सलाम वालेकुम सद्दाम भाई, मुझे आपका VIP एडिटिंग कोर्स और नोट्स अनलॉक करना है। कृपया Access Code दें।");
+    }
+
+    // User Login / Signup System
+    function openLoginPrompt() {
+      const currentUser = localStorage.getItem('saddam_current_user');
+      if (currentUser) {
+        if (confirm(`Aap currently logged in hain: ${currentUser}\nLogout karna chahte hain?`)) {
+          localStorage.removeItem('saddam_current_user');
+          document.getElementById('userLoginStatusBtn').innerText = "👤 Member Login";
+        }
+        return;
+      }
+
+      const userName = prompt("Saddam Studios Community me apna naam enter karein:");
+      if (userName && userName.trim() !== "") {
+        localStorage.setItem('saddam_current_user', userName.trim());
+        document.getElementById('userLoginStatusBtn').innerText = `👤 ${userName.trim()}`;
+        alert(`Khushamdeed, ${userName}! Aap successfully log in ho chuke hain.`);
+      }
+    }
+
+    // VIP Unlock Logic
+    function verifyVaultAccess() {
+      const code = document.getElementById('vaultAccessCodeInput').value.trim();
+      if (code.toUpperCase() === VAULT_PASSCODE) {
+        document.getElementById('lockedStateNotice').style.display = 'none';
+        document.getElementById('btnPayCourseWa').style.display = 'none';
+        document.getElementById('unlockedContentArea').style.display = 'block';
+        alert("🎉 VIP Vault Unlocked!");
+      } else {
+        alert("❌ Invalid Access Code! Code pane ke liye WhatsApp par sampark karein.");
+      }
+    }
+
+    // Admin Control Panel
+    function toggleControlCenter() {
+      if (isUnlocked) {
+        document.getElementById('adminControlPanel').style.display = 'none';
+        isUnlocked = false;
+        return;
+      }
+
+      const pin = prompt("Admin Control Panel ke liye 5-digit PIN enter karein:");
+      if (pin === SECRET_PIN) {
+        isUnlocked = true;
+        document.getElementById('adminControlPanel').style.display = 'block';
+
+        document.getElementById('inputPhone').value = appData.phone;
+        document.getElementById('inputLocation').value = appData.location;
+        document.getElementById('inputName').value = appData.name;
+        document.getElementById('inputBio').value = appData.bio;
+      } else if (pin !== null) {
+        alert("Galat PIN!");
+      }
+    }
+
+    function saveProfileData() {
+      appData.phone = document.getElementById('inputPhone').value.trim() || appData.phone;
+      appData.location = document.getElementById('inputLocation').value.trim() || appData.location;
+      appData.name = document.getElementById('inputName').value.trim() || appData.name;
+      appData.bio = document.getElementById('inputBio').value.trim() || appData.bio;
+
+      localStorage.setItem('saddam_master_profile', JSON.stringify(appData));
+      applyProfileData();
+      alert("✅ Studio profile updated successfully!");
+    }
+
+    function extractYouTubeID(url) {
+      const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      const match = url.match(regExp);
+      return (match && match[2].length === 11) ? match[2] : url;
+    }
+
+    function publishVideoFromApp() {
+      const title = document.getElementById('videoTitleInput').value.trim();
+      const rawUrl = document.getElementById('videoUrlInput').value.trim();
+
+      if (!title || !rawUrl) {
+        alert('Title aur URL dono fill karein!');
+        return;
+      }
+
+      const videoId = extractYouTubeID(rawUrl);
+      renderVideoCard(title, videoId, true);
+
+      const savedVideos = JSON.parse(localStorage.getItem('saddam_master_videos') || '[]');
+      savedVideos.unshift({ title: title, id: videoId });
+      localStorage.setItem('saddam_master_videos', JSON.stringify(savedVideos));
+
+      document.getElementById('videoTitleInput').value = '';
+      document.getElementById('videoUrlInput').value = '';
+      alert('🚀 Naya video feed me live ho chuka hai!');
+    }
+
+    function renderVideoCard(title, videoId, prepend) {
+      const container = document.getElementById('videoFeedContainer');
+      const card = document.createElement('div');
+      card.className = 'video-card';
+
+      const waOrderUrl = `https://wa.me/91${appData.phone}?text=` + encodeURIComponent(`अस्सलाम वालेकुम सद्दाम हुसैन भाई, मैंने आपका प्रोजेक्ट '${title}' देखा। मुझे ऐसा वीडियो बनवाना है।`);
+
+      card.innerHTML = `
+        <div class="video-container">
+          <iframe 
+            src="https://www.youtube.com/embed/${videoId}" 
+            title="${title}"
+            allowfullscreen>
+          </iframe>
+        </div>
+        <div class="video-body">
+          <span class="video-tag">Latest Project</span>
+          <h3 class="video-title">${title}</h3>
+          <p class="video-desc">High quality visual work by Mohammad Saddam Studios (Dhanwar).</p>
+          <a href="${waOrderUrl}" target="_blank" class="wa-btn">
+            💬 Direct Order on WhatsApp
+          </a>
+        </div>
+      `;
+
+      if (prepend) {
+        container.prepend(card);
+      } else {
+        container.appendChild(card);
+      }
+    }
+
+    function addVipLesson() {
+      const title = document.getElementById('vipTitleInput').value.trim();
+      const content = document.getElementById('vipContentInput').value.trim();
+
+      if (!title || !content) {
+        alert('Lesson title aur content dono zaroori hain!');
+        return;
+      }
+
+      const lessons = JSON.parse(localStorage.getItem('saddam_vip_lessons') || '[]');
+      lessons.push({ title: title, content: content });
+      localStorage.setItem('saddam_vip_lessons', JSON.stringify(lessons));
+
+      document.getElementById('vipTitleInput').value = '';
+      document.getElementById('vipContentInput').value = '';
+      loadVipLessons();
+      alert('💎 Naya VIP Lesson/Note add ho gaya!');
+    }
+
+    function loadVipLessons() {
+      const container = document.getElementById('vipLessonList');
+      const lessons = JSON.parse(localStorage.getItem('saddam_vip_lessons') || '[]');
+      lessons.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'lesson-item';
+        div.innerHTML = `
+          <div class="lesson-title">📌 ${item.title}</div>
+          <div class="lesson-text">${item.content}</div>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    // Public Review Functions
+    function submitPublicReview() {
+      const name = document.getElementById('revNameInput').value.trim();
+      const comment = document.getElementById('revCommentInput').value.trim();
+
+      if (!name || !comment) {
+        alert('Naam aur review comment fill karein!');
+        return;
+      }
+
+      const reviews = JSON.parse(localStorage.getItem('saddam_client_reviews') || '[]');
+      reviews.unshift({ name: name, comment: comment });
+      localStorage.setItem('saddam_client_reviews', JSON.stringify(reviews));
+
+      document.getElementById('revNameInput').value = '';
+      document.getElementById('revCommentInput').value = '';
+      loadPublicReviews();
+      alert('⭐ Review submit ho gaya!');
+    }
+
+    function loadPublicReviews() {
+      const container = document.getElementById('publicReviewsContainer');
+      const reviews = JSON.parse(localStorage.getItem('saddam_client_reviews') || '[]');
+      if (reviews.length === 0) return;
+
+      container.innerHTML = '';
+      reviews.forEach(r => {
+        const div = document.createElement('div');
+        div.className = 'review-item';
+        div.innerHTML = `
+          <div class="review-author">
+            <span>${r.name}</span>
+            <span style="color:var(--gold-primary);">★★★★★</span>
+          </div>
+          <p class="review-text">${r.comment}</p>
+        `;
+        container.appendChild(div);
+      });
+    }
+  </script>
+</body>
+</html>
